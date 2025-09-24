@@ -1,22 +1,33 @@
 [project]
-name = "Remote-Equipment-Insurance-Platform"
-description = ""
+name = 'Remote-Equipment-Insurance-Platform'
+description = ''
 authors = []
 telemetry = true
-cache_dir = "./.cache"
+cache_dir = '.\.cache'
+requirements = []
+[contracts.equipment-failure-claims]
+path = 'contracts/equipment-failure-claims.clar'
+clarity_version = 3
+epoch = 'latest'
 
-# [contracts.counter]
-# path = "contracts/counter.clar"
-# epoch = "latest"
+[contracts.equipment-health-oracle]
+path = 'contracts/equipment-health-oracle.clar'
+clarity_version = 3
+epoch = '3.2'
 
+[contracts.usage-pattern-tracker]
+path = 'contracts/usage-pattern-tracker.clar'
+clarity_version = 3
+epoch = '3.2'
 [repl.analysis]
-passes = ["check_checker"]
-check_checker = { trusted_sender = false, trusted_caller = false, callee_filter = false }
+passes = ['check_checker']
 
-# Check-checker settings:
-# trusted_sender: if true, inputs are trusted after tx_sender has been checked.
-# trusted_caller: if true, inputs are trusted after contract-caller has been checked.
-# callee_filter: if true, untrusted data may be passed into a private function without a
-# warning, if it gets checked inside. This check will also propagate up to the
-# caller.
-# More informations: https://www.hiro.so/blog/new-safety-checks-in-clarinet
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
+
+[repl.remote_data]
+enabled = false
+api_url = 'https://api.hiro.so'
